@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const editTaskDate = document.getElementById('edit-task-date');
     let currentTaskElement = null;
 
-    // Vazifani qo'shish
     addButton.addEventListener('click', function() {
         const taskText = newTaskInput.value.trim();
         if (taskText === '') {
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const listItem = document.createElement('li');
         listItem.classList.add('active');
 
-        // Checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.addEventListener('change', function() {
@@ -28,11 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
             listItem.classList.toggle('active', !checkbox.checked);
         });
 
-        // Vazifa matni
         const taskSpan = document.createElement('span');
         taskSpan.textContent = taskText;
 
-        // Tahrirlash tugmasi
         const editButton = document.createElement('button');
         editButton.textContent = 'Tahrirlash';
         editButton.className = 'edit-btn';
@@ -43,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'flex';
         });
 
-        // O'chirish tugmasi
         const removeButton = document.createElement('button');
         removeButton.textContent = 'O\'chirish';
         removeButton.className = 'remove-btn';
@@ -57,15 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
         listItem.appendChild(removeButton);
         taskList.appendChild(listItem);
 
-        newTaskInput.value = ''; // Kirish maydonini tozalash
+        newTaskInput.value = '';
     });
 
-    // Modal oynani yopish
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    // Modal oynada saqlash
     saveButton.addEventListener('click', function() {
         if (currentTaskElement) {
             const newTaskText = editTaskInput.value.trim();
@@ -82,14 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Modal oynani yopish uchun tashqaridan bosish
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    // Filtrlash funksiyalari
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
